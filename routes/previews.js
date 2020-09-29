@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const parsePreviews = require('../services/parsePreviews.js');
 const defaultURL =
-  'https://www.udemy.com/course/flutter-dart-the-complete-flutter-app-development-course/';
+  'https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/';
 //? /previews
 
 
