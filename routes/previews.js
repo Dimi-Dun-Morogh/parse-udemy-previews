@@ -20,4 +20,17 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+//? just in case
+router.get('/', async (req, res) => {
+  const url  = req.body.url || defaultURL
+  try {
+    const data = await parsePreviews(url
+    );
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 module.exports = router;
