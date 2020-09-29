@@ -6,7 +6,7 @@ async function parsePreviews(URL) {
   const data = await axios.get(URL);
   const $ = cheerio.load(data.data);
   const allSpans = $('.udlite-block-list-item-content, span');
-
+  const courseName = $('h1').text();
   //ищем среди всех span'ов Preview/Предпросмотр
   allSpans.each(function () {
     if ($(this).text() === 'Preview' || $(this).text() === 'Предпросмотр') {
@@ -21,7 +21,12 @@ async function parsePreviews(URL) {
       });
     }
   });
-  return results.sort((a, b) => a.durationInSeconds - b.durationInSeconds);
+   results.sort((a, b) => a.durationInSeconds - b.durationInSeconds);
+   return {
+     url: URL,
+     courseName,
+     results
+   }
 }
 
 module.exports = parsePreviews;
