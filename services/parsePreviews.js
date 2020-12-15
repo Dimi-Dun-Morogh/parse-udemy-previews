@@ -9,8 +9,9 @@ async function parsePreviews(URL) {
   const courseName = $('h1').text();
   //ищем среди всех span'ов Preview/Предпросмотр
   allSpans.each(function () {
+
     if ($(this).text() === 'Preview' || $(this).text() === 'Предпросмотр') {
-      const text = $(this).parent('span').text();
+      const text = $(this).parent().closest('div').first('span').text()
       // время в секундах для  дальнейшних сортировок
       let [minutes, seconds] = text.slice(-5).split(':');
       results.push({
